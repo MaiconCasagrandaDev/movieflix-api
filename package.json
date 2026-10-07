@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tsx watch src/server.ts",
+    "dev": "npx tsx watch --env-file=.env src/server.ts",
     "format": "prettier --write src/**/*.ts",
     "postinstall": "prisma skills sync || exit 0"
   },
