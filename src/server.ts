@@ -1,11 +1,14 @@
 import { PrismaClient } from "./generated/prisma/client.js";
 import express from "express";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "../swagger.json" with { type: "json" };
 
 const port = 3000;
 const app = express();
 const prisma = new PrismaClient();
 
 app.use(express.json());
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Busca e exibe dados
 app.get("/movies", async (_, res) => {
